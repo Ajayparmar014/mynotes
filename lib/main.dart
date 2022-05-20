@@ -1,18 +1,27 @@
 // ignore_for_file: avoid_print
 
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/material.dart';
+
+import 'package:mynotes/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mynotes/firebase_options.dart';
+import 'package:mynotes/register.dart';
+import 'firebase_options.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MaterialApp(
       title: 'My notes',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Colors.blue),
       home: const LoginPage(),
+      routes: {'/register/':(context)=>const RegisterPage(),},
+      
     ),
   );
 }
@@ -105,7 +114,10 @@ class _LoginPageState extends State<LoginPage> {
                       // }
                     }
                   },
-                  child: const Text("Login"))
+                  child: const Text("Login")),
+                  TextButton(onPressed: (){
+                    Navigator.of(context).pushNamedAndRemoveUntil('/register/', (route) => false,);
+                  }, child: const Text("Not registered yet? Register here!"))
             ],
           );
         default:
@@ -117,3 +129,4 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
