@@ -3,14 +3,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
+class _LoginViewState extends State<LoginView> {
   late final TextEditingController _email;
   late final TextEditingController _password;
   @override
@@ -30,7 +30,9 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Register")),
+      appBar: AppBar(
+        title: const Text("Login"),
+      ),
       body: Column(
         children: [
           TextField(
@@ -70,27 +72,26 @@ class _RegisterViewState extends State<RegisterView> {
               final password = _password.text;
               try {
                 final userCredential = await FirebaseAuth.instance
-                    .createUserWithEmailAndPassword(
+                    .signInWithEmailAndPassword(
                         email: email, password: password);
                 print(userCredential);
               } on FirebaseAuthException catch (e) {
-                if (e.code == 'weak-password') {
-                  print("Weak Password");
-                } else if (e.code == 'email-already-in-use') {
-                  print("Email already in use");
-                } else if (e.code == 'invalid-email') {
-                  print("invalid email entered");
+                if (e.code == "user not found") {
+                  print("User not found");
+                } else if (e.code == "Wrong password") {
+                  print("Wrong password");
                 }
               }
             },
-            child: const Text("Register"),
+            child: const Text("Login"),
           ),
           TextButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil('/login', (route) => false);
-              },
-              child: const Text("Already registered Login here!"))
+            onPressed: () {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('/register/', (route) => false);
+            },
+            child: const Text(" Not registered yet? Register here"),
+          )
         ],
       ),
     );
