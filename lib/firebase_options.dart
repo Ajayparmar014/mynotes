@@ -69,8 +69,7 @@ class DefaultFirebaseOptions {
     projectId: 'mynotes-3badf',
     databaseURL: 'https://mynotes-3badf-default-rtdb.firebaseio.com',
     storageBucket: 'mynotes-3badf.appspot.com',
-    iosClientId:
-        '532890963327-5052uq43cksqm1cq2hroj3u6ipqttfb3.apps.googleusercontent.com',
+    iosClientId: '532890963327-5052uq43cksqm1cq2hroj3u6ipqttfb3.apps.googleusercontent.com',
     iosBundleId: 'com.example.mynotes',
   );
 
@@ -81,17 +80,7 @@ class DefaultFirebaseOptions {
     projectId: 'mynotes-3badf',
     databaseURL: 'https://mynotes-3badf-default-rtdb.firebaseio.com',
     storageBucket: 'mynotes-3badf.appspot.com',
-    iosClientId:
-        '532890963327-5052uq43cksqm1cq2hroj3u6ipqttfb3.apps.googleusercontent.com',
+    iosClientId: '532890963327-5052uq43cksqm1cq2hroj3u6ipqttfb3.apps.googleusercontent.com',
     iosBundleId: 'com.example.mynotes',
   );
-  // static const FirebaseOptions web = FirebaseOptions(
-  //   apiKey: "AIzaSyAQjAv5lin1oKI_VfT6a2Z0VL234eaVToM",
-  //   authDomain: "mynotes-3badf.firebaseapp.com",
-  //   databaseURL: "https://mynotes-3badf-default-rtdb.firebaseio.com",
-  //   projectId: "mynotes-3badf",
-  //   storageBucket: "mynotes-3badf.appspot.com",
-  //   messagingSenderId: "532890963327",
-  //   appId: "1:532890963327:web:85fcfdbcc1a021caccde4a",
-  // );
 }
